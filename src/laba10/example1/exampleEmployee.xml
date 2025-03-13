@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Libray>
+            
+    
+    <Employee>
+                        
+        
+        <Name>Иванов И.И.</Name>
+                        
+        
+        <Position>Разработчик</Position>
+                        
+        
+        <Birthday>01.01.1990</Birthday>
+                    
+    
+    </Employee>
+            
+    
+    <Employee>
+                        
+        
+        <Name>Петров П.П.</Name>
+                        
+        
+        <Position>Аналитик</Position>
+                        
+        
+        <Birthday>02.02.1990</Birthday>
+                    
+    
+    </Employee>
+            
+    
+    <Employee>
+                        
+        
+        <Name>Сидоров В.П.</Name>
+                        
+        
+        <Position>DevOps engineer</Position>
+                        
+        
+        <Birthday>12.02.1994</Birthday>
+                    
+    
+    </Employee>
+        
+    
+
+</Libray>
