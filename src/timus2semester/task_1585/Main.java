@@ -2,36 +2,50 @@ package timus2semester.task_1585;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+
         String inputFileName = "src/timus2semester/task_1585/input.txt";
-        BufferedReader br = new BufferedReader(new FileReader(inputFileName));
+
+
         boolean oj = System.getProperty("ONLINE_JUDGE") != null;
 
-        int n = Integer.parseInt(br.readLine());
-        int k1 = 0, k2 = 0, k3 = 0;
+        try (BufferedReader reader = oj ? new BufferedReader(new InputStreamReader(System.in)) : new BufferedReader(new FileReader(inputFileName))) {
 
-        for (int i = 0; i < n; ++i) {
-            String[] input = br.readLine().split(" ");
-            String s = input[0];
+            int n = Integer.parseInt(reader.readLine());
 
-            if (s.equals("Emperor")) {
-                ++k1;
-            } else if (s.equals("Little")) {
-                ++k2;
-            } else {
-                ++k3;
+
+            Map<String, Integer> penguinCounts = new HashMap<>();
+            penguinCounts.put("Emperor Penguin", 0);
+            penguinCounts.put("Macaroni Penguin", 0);
+            penguinCounts.put("Little Penguin", 0);
+
+
+            for (int i = 0; i < n; i++) {
+                String penguin = reader.readLine();
+                penguinCounts.put(penguin, penguinCounts.get(penguin) + 1);
             }
-        }
 
-        if (k1 > k2 && k1 > k3) {
-            System.out.println("Emperor Penguin");
-        } else if (k2 > k1 && k2 > k3) {
-            System.out.println("Little Penguin");
-        } else if (k3 > k1 && k3 > k2) {
-            System.out.println("Macaroni Penguin");
+
+            String mostPopularPenguin = "";
+            int maxCount = 0;
+
+            for (Map.Entry<String, Integer> entry : penguinCounts.entrySet()) {
+                if (entry.getValue() > maxCount) {
+                    maxCount = entry.getValue();
+                    mostPopularPenguin = entry.getKey();
+                }
+            }
+
+
+            System.out.println(mostPopularPenguin);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
